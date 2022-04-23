@@ -17,56 +17,60 @@
 - Python 3.9
 - Django 3.2
 - Django REST framework 3.12.4
-- etc.
+- PostgreSQL
+- Gunicorn
 
-## Установка и запуск проекта
+## Установка и запуск проекта в Docker
 
-Скопируйте проект и создайте виртуальное окружение
-
-```sh
-git clone https://github.com/pozarnik/api_yamdb.git
-cd api_yamdb
-python -m venv venv
-```
-
-Активируйте виртуальное окружение и установите зависимости
+Скопируйте проект и перейдите в папку _infra_
 
 ```sh
-source venv/Scripts/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+git clone https://github.com/pozarnik/infra_sp2.git
+cd infra_sp2/infra/
 ```
 
-Выполните миграции
+В папке _infra_ создайте файл _.env_, добавьте в него следующие строки со своими данными:
+
+```
+DB_ENGINE=             # указываем, что работаем с postgresql
+DB_NAME=               # имя базы данных
+POSTGRES_USER=         # логин для подключения к БД
+POSTGRES_PASSWORD=     # пароль для подключения к БД (установите свой)
+DB_HOST=               # название сервиса (контейнера) БД
+DB_PORT=               # порт для подключения к БД 
+EMAIL_HOST=            # адрес сервера исходящей почты
+EMAIL_PORT=            # порт сервера исходящей почты
+EMAIL_HOST_USER=       # логин для авторизации на почтовом сервере
+EMAIL_HOST_PASSWORD=   # пароль для авторизации на почтовом сервере
+```
+
+Запустите docker-compose
 
 ```sh
-cd api_yamdb
-python manage.py makemigrations
-python manage.py migrate
+sudo docker-compose up -d --build
 ```
 
-В корне проекта создайте файл _.env_, добавьте в него следующие строки со своими данными:
-
-```
-EMAIL_HOST =
-EMAIL_PORT =
-EMAIL_HOST_USER =
-EMAIL_HOST_PASSWORD =
-```
-
-Запустите проект
+Выполните миграции и создайте суперпользователя
 
 ```sh
-python manage.py runserver
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py createsuperuser
 ```
+
+Переместите в volume файлы статики
+
+```sh
+docker-compose exec web python manage.py collectstatic --no-input
+```
+
 
 ## Документации проекта
 
-Запустите сервер и перейдите по адресу
+Перейдите по адресу
 
 ```sh
-http://127.0.0.1:8000/redoc/
-http://127.0.0.1:8000/swagger/
+http://localhost/redoc/
+http://localhost/swagger/
 ```
 
 ## Мои профили

@@ -152,7 +152,7 @@ if DEBUG:
     EMAIL_HOST_USER = 'email@yamdb.com'
 else:
     EMAIL_USE_TLS = True
-    EMAIL_HOST = os.getenv('EMAIL_HOST', default='smtp.gmail.com')
-    EMAIL_PORT = os.getenv('EMAIL_PORT', default=587)
-    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', default='username@gmail.com')
-    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', default='password')
+    EMAIL_HOST = os.getenv('EMAIL_HOST', default='localhost')
+    EMAIL_PORT = os.getenv('EMAIL_PORT', default=25)
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', default='')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', default='')
