@@ -9,7 +9,7 @@ services:
       - ./.env
 
   web:
-    image: pozarnik/yamdb_d:v1.03
+    image: pozarnik/yamdb_d:latest
     restart: always
     volumes:
       - static_value:/app/static/
