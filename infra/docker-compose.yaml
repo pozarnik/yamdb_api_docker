@@ -12,7 +12,7 @@ services:
     image: pozarnik/yamdb_d:latest
     restart: always
     volumes:
-      - static_value:/app/static/
+      - ./static:/app/static/
       - ./media:/app/media/
     depends_on:
       - db
@@ -26,11 +26,10 @@ services:
       - "443:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - static_value:/var/html/static/
+      - ./static:/var/html/static/
       - ./media:/var/html/media/
     depends_on:
       - web
 
 volumes:
   db_value:
-  static_value:
