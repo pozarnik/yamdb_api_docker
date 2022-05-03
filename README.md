@@ -84,7 +84,7 @@ http://localhost/swagger/
 ## Мои профили
 
 - [GitHub](https://github.com/pozarnik/)
-- [LinkedIn](https://linkedin.com/in/pozarnik/)
+- [LinkedIn](https://linkedin.com/in/ivan-alekseyevich-32411138/)
 
 ## License
 
