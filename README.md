@@ -26,8 +26,8 @@
 Скопируйте проект и перейдите в папку __infra__
 
 ```sh
-git clone https://github.com/pozarnik/infra_sp2.git
-cd infra_sp2/infra/
+git clone https://github.com/pozarnik/yamdb_api_docker.git
+cd yamdb_api_docker/infra/
 ```
 
 В папке __infra__ создайте файл __.env__, добавьте в него свои данные при необходимости (без пробелов и комментариев):
